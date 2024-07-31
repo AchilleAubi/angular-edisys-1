@@ -1,0 +1,130 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+  [fullScreen]="true"
+  ><p style="color: white">Chargement...</p></ngx-spinner
+>
+
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <a href="app/home">
+        <button type="button" class="btn btn-secondary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-arrow-left-square"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+            />
+          </svg>
+          <span class="ms-2">Retour</span>
+        </button>
+      </a>
+    </div>
+    <div class="col-md-4"><h2>Ajouter un produit</h2></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="row g-3 custom-form">
+        <div class="col-md-6">
+          <label for="validationDefault01" class="form-label"
+            >Nom du produit</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationDefault01"
+            required
+            [(ngModel)]="product.title"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault02" class="form-label">Catégorie</label>
+          <select
+            class="form-select"
+            id="validationDefault04"
+            required
+            (change)="getItemCat($event)"
+          >
+            <option selected disabled value="">Choisir...</option>
+            <option *ngFor="let item of categories" [value]="item">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="validationDefault03" class="form-label">Image</label>
+          <input
+            type="text"
+            class="form-control"
+            id="validationDefault03"
+            required
+            [(ngModel)]="product.image"
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationDefault04" class="form-label"
+            >Description</label
+          >
+          <textarea
+            rows="8"
+            class="form-control"
+            id="validationTextarea"
+            placeholder="Description"
+            required
+            [(ngModel)]="product.description"
+          ></textarea>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault05" class="form-label">Prix</label>
+          <input
+            type="number"
+            class="form-control"
+            id="validationDefault05"
+            required
+            [(ngModel)]="product.price"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault05" class="form-label">Rating</label>
+          <input
+            type="number"
+            class="form-control"
+            id="validationDefault05"
+            required
+            [(ngModel)]="rating"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault05" class="form-label">Count</label>
+          <input
+            type="number"
+            class="form-control"
+            id="validationDefault05"
+            required
+            [(ngModel)]="count"
+          />
+        </div>
+        <div class="col-12">
+          <button
+            class="btn btn-primary w-100"
+            type="submit"
+            (click)="onAddProduct()"
+          >
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="custom-form-2"></div>

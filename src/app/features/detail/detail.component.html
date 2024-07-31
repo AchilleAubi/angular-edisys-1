@@ -1,0 +1,82 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+  [fullScreen]="true"
+  ><p style="color: white">Chargement...</p></ngx-spinner
+>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <app-button-add-product></app-button-add-product>
+    </div>
+  </div>
+  <div class="row custom-form"><h2>Détail du produit</h2></div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row g-2 custom-form">
+        <div class="col-md-6">
+          <label for="validationDefault01" class="form-label"
+            >Nom du produit</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="validationDefault01"
+            [(ngModel)]="product.title"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault02" class="form-label">Catégorie</label>
+          <select class="form-select" id="validationDefault04" required (change)="getItemCat($event)">
+            <option selected disabled value="">{{ product.category }}</option>
+            <option *ngFor="let item of categories" [value]="item">{{ item }}</option>
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="validationDefault03" class="form-label">Image</label>
+          <input
+            type="text"
+            class="form-control"
+            id="validationDefault03"
+            [(ngModel)]="product.image"
+            required
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="validationDefault04" class="form-label"
+            >Description</label
+          >
+          <textarea
+            rows="8"
+            class="form-control"
+            id="validationTextarea"
+            placeholder="Description"
+            [(ngModel)]="product.description"
+            required
+          ></textarea>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault05" class="form-label">Prix</label>
+          <input
+            type="number"
+            class="form-control"
+            id="validationDefault05"
+            [(ngModel)]="product.price"
+            required
+          />
+        </div>
+        <div class="col-12 mt-3">
+          <button class="btn btn-primary w-100" type="submit" (click)="onUpdateProduct()">Modifier</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 text-center custom-form">
+        <img [src]="product.image" width="350" alt="img">
+    </div>
+  </div>
+</div>
+<div class="custom-form-2"></div>

@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-4" href="#">
+      <img src="assets/image/logo_cepaldata.png" alt="logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse margin-custom"
+      id="navbarTogglerDemo02"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item me-3">
+          <a class="nav-link active" aria-current="page" href="#">ACCUEIL</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" aria-current="page" (click)="onShowToastWarn()">PRODUIT</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" aria-current="page" (click)="onShowToastWarn()">SERVICES</a>
+        </li>
+      </ul>
+      <div class="d-flex me-5" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Rechercher"
+          aria-label="Search"
+          (change)="publishEvent($event)"
+        />
+      </div>
+      <span class="me-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          fill="currentColor"
+          class="bi bi-person-circle"
+          viewBox="0 0 16 16"
+        >
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+          <path
+            fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+</nav>
+
+

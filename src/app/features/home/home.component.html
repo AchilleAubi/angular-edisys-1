@@ -1,0 +1,118 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-beat"
+  [fullScreen]="true"
+  ><p style="color: white">Chargement...</p></ngx-spinner
+>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <app-button-add-product></app-button-add-product>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row">
+      <div class="col-md-12"></div>
+    </div>
+  </div>
+</div>
+
+<br />
+<section id="products" class="products">
+  <div class="container">
+    <br />
+    <h3>LISTES DES PRODUITS DISPONIBLES</h3>
+    <br />
+    <div class="row">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="products-flters">
+          <li
+            [class.filter-active]="activeCategory === 'All'"
+            (click)="getAllProducts()"
+          >
+            All
+          </li>
+          <li
+            *ngFor="let item of categories; let i = index"
+            (click)="getProductByCat(item)"
+            [class.filter-active]="activeCategory === item"
+          >
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row products-container">
+      <div
+        *ngFor="let list of products"
+        class="col-lg-3 col-md-6 products-item"
+      >
+        <div class="products-wrap">
+          <img [src]="list.image" class="img-fluid" alt="{{ list.title }}" />
+          <div class="products-info">
+            <h4>{{ list.title }}</h4>
+            <p>{{ list.category }}</p>
+            <button
+              (click)="onGoInDetails(list.id)"
+              type="button"
+              class="btn btn-outline-success w-75 mt-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-eye-fill"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                <path
+                  d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"
+                /></svg
+              ><span class="ms-2">Voir le détail</span>
+            </button>
+            <div class="products-links">
+              <a
+                [href]="list.image"
+                data-gallery="productsGallery"
+                class="products-lightbox"
+                [title]="list.title"
+              >
+                <i class="bx bx-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="info mt-3">
+          <span>{{ list.title }}</span>
+          <br />
+          <span>Categorie : {{ list.category }}</span>
+          <br />
+          <div class="rating">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="me-2 bi bi-star-fill" viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="me-2 bi bi-star-fill" viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="me-2 bi bi-star-fill" viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="me-2 bi bi-star-half" viewBox="0 0 16 16">
+              <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="me-2 bi bi-star" viewBox="0 0 16 16">
+              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+            </svg>
+          </div>
+          <br />
+          <h2>{{ list.price }} £</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
